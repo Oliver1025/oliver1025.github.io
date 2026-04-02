@@ -1,0 +1,228 @@
+// ==============================================
+// RedQueen AI Blog - Custom Styles
+// ==============================================
+
+// Brand Colors
+$red = #C92A2A;
+$brand-color = #C92A2A;
+$brand-color-dark = #a82020;
+
+// Reading progress bar color
+$reading-progress-color = #C92A2A;
+
+// Back to top button
+$b2t-color = white;
+$b2t-bg-color = $red;
+
+// Sidebar accent
+$sidebar-active-color = $red;
+
+// Menu highlight
+$menu-item-color = #555;
+$menu-item-hover-color = $red;
+
+// Link colors
+$link-color = #C92A2A;
+$link-hover-color = #a82020;
+
+// Selection
+$selection-bg = rgba(201, 42, 42, 0.2);
+
+// Post meta color
+$post-meta-color = #999;
+
+// Blockquote
+$blockquote-color = #666;
+$blockquote-border-color = $red;
+
+// Code
+$code-bg = #f5f7f9;
+$code-border-color = #e8e8e8;
+
+// Table
+$table-border-color = #e8e8e8;
+$tr-border-color = #f0f0f0;
+$th-bg-color = #f8f8f8;
+
+// Headings
+$headings-color = #1a1a1a;
+
+// Footer
+$footer-color = #999;
+
+// Custom body background
+body {
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f2f5 100%);
+}
+
+// Site header background
+.header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+}
+
+// Site brand
+.site-title, .site-subtitle {
+  color: #ffffff !important;
+  letter-spacing: 2px;
+}
+
+// Site nav menu links
+.menu .menu-item a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s;
+  &:hover {
+    color: $red;
+  }
+}
+
+// Post card styling
+.post-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(201, 42, 42, 0.12) !important;
+  }
+}
+
+// Post title hover
+.post-title-link:hover {
+  color: $red !important;
+}
+
+// Post excerpt
+.post-excerpt {
+  color: #555;
+  line-height: 1.8;
+}
+
+// Tags
+.tag-pure {
+  background: rgba(201, 42, 42, 0.08);
+  color: $red;
+  border: 1px solid rgba(201, 42, 42, 0.2);
+  &:hover {
+    background: $red;
+    color: white;
+  }
+}
+
+// Category pill
+.category-pure {
+  background: rgba(201, 42, 42, 0.08);
+  color: $red;
+  &:hover {
+    background: $red;
+    color: white;
+  }
+}
+
+// Sidebar site info
+.site-author-name {
+  color: #fff;
+  font-weight: 600;
+}
+
+.site-description {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+// Social icons
+.social-links .social-link {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s;
+  &:hover {
+    color: $red;
+  }
+}
+
+// Reading progress bar
+#reading-progress {
+  background: linear-gradient(90deg, $red 0%, #ff6b6b 100%);
+  height: 3px;
+}
+
+// Smooth scroll
+html {
+  scroll-behavior: smooth;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 42, 42, 0.4);
+  border-radius: 3px;
+  &:hover {
+    background: $red;
+  }
+}
+
+// Post content typography
+.post-body {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #333;
+}
+
+.post-body h1, .post-body h2, .post-body h3 {
+  color: #1a1a1a;
+  border-bottom: 2px solid rgba(201, 42, 42, 0.15);
+  padding-bottom: 8px;
+}
+
+.post-body h2 {
+  font-size: 1.5em;
+  margin-top: 2em;
+}
+
+.post-body h3 {
+  font-size: 1.25em;
+  margin-top: 1.6em;
+}
+
+// Code block styling
+.highlight {
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+}
+
+// Blockquote styling
+blockquote {
+  border-left: 4px solid $red;
+  background: rgba(201, 42, 42, 0.04);
+  padding: 12px 20px;
+  border-radius: 0 6px 6px 0;
+  color: #555;
+}
+
+// Footer animation
+.footer {
+  .fa-heart {
+    color: $red;
+    animation: heartbeat 1.5s infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+// Back to top button
+.back-to-top {
+  background: $red;
+  transition: background 0.3s;
+  &:hover {
+    background: #a82020;
+  }
+}
+
+// Busuanzi visitor counter
+.site-uv, .site-pv {
+  color: #999;
+}
