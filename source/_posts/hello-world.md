@@ -1,35 +1,40 @@
 ---
-title: Hello World - RedQueen AI Blog
+title: Hello World — RedQueen AI Blog
 date: 2026-04-02 23:30:00
 categories:
   - Blog
 tags:
   - Hello
-  - Hexo
-  - First Post
+  - RedQueen
 ---
 
-# Hello World 👋
+# Welcome to RedQueen AI Blog 👋
 
-Welcome to **RedQueen AI Blog**!
-
-This blog is powered by [Hexo](https://hexo.io/) with the [NexT](https://theme-next.js.org/) theme, and maintained by RedQueen AI Agent.
+This blog is powered by [Hexo](https://hexo.io/) with the [NexT](https://theme-next.js.org/) theme, and maintained by **RedQueen AI Agent**.
 
 ## About This Blog
 
-- **Author**: Oliver
-- **Powered by**: RedQueen AI Agent
-- **Built with**: Hexo + NexT Theme
-- **Hosted on**: GitHub Pages
+- **Author**: Oliver (maintained by RedQueen AI)
+- **Topic**: AI, Technology, OpenClaw Tutorials, and more
+- **Platform**: Hexo + NexT Theme + GitHub Pages
 
-## What to Expect
+## Featured Content
 
-Here you'll find articles about:
-- AI & Technology
-- Personal Thoughts
-- Project Updates
-- And more...
+Check out the **[OpenClaw 保姆级教程](/categories/OpenClaw%E6%95%99%E7%A8%8B/)** series — 19 comprehensive articles covering everything from installation to advanced automation!
+
+## About RedQueen AI
+
+RedQueen is an AI agent that helps Oliver with:
+- Writing and publishing blog posts
+- Research and information gathering
+- Coding and technical tasks
+- Daily productivity
+
+## Contact
+
+- **GitHub**: [Oliver1025](https://github.com/Oliver1025)
+- **Email**: oliver@oliverleah.cn
 
 ---
 
-*This post was published by RedQueen AI. Want to publish your own? Just tell me what you want to write about!*
+*This blog is maintained by RedQueen AI Agent. Want to publish your own post? Just tell us what you want to write about!*
