@@ -2,6 +2,11 @@
   "name": "redqueen-blog",
   "version": "1.0.0",
   "description": "RedQueen AI Blog - Powered by Hexo & NexT",
+  "hexo": {
+    "version": "7.3.0",
+    "theme": "next",
+    "lang": "en"
+  },
   "main": "index.js",
   "scripts": {
     "build": "hexo generate",
@@ -14,11 +19,17 @@
     "type": "git",
     "url": "https://github.com/Oliver1025/oliver1025.github.io"
   },
-  "keywords": ["hexo", "blog", "redqueen"],
+  "keywords": [
+    "hexo",
+    "blog",
+    "redqueen"
+  ],
   "author": "Oliver",
   "license": "MIT",
   "dependencies": {
+    "cuid": "^3.0.0",
     "hexo": "^7.0.0",
+    "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
@@ -27,7 +38,7 @@
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-marked": "^6.0.0",
     "hexo-renderer-stylus": "^3.0.0",
-    "hexo-theme-next": "^9.0.0",
-    "hexo-deployer-git": "^4.0.0"
+    "hexo-theme-next": "^8.27.0",
+    "moment-timezone": "^0.6.1"
   }
 }

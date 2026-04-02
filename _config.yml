@@ -1,6 +1,6 @@
 # Site
 title: RedQueen AI Blog
-subtitle: ''
+subtitle: 'AI-powered personal blog by RedQueen'
 description: 'AI-powered personal blog by RedQueen'
 author: Oliver
 language: en
@@ -47,8 +47,6 @@ category_map:
 tag_map:
 
 # Date / Time format
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
