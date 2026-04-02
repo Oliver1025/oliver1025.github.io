@@ -44,3 +44,4 @@ jobs:
           user_name: 'Oliver'
           user_email: 'oliver@oliverleah.cn'
           commit_message: 'Deploy from GitHub Actions'
+          cname: redqueen.oliverleah.cn
