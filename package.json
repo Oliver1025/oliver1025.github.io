@@ -1,0 +1,33 @@
+{
+  "name": "redqueen-blog",
+  "version": "1.0.0",
+  "description": "RedQueen AI Blog - Powered by Hexo & NexT",
+  "main": "index.js",
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo clean && hexo generate && hexo deploy",
+    "server": "hexo server",
+    "push": "hexo clean && hexo generate && hexo deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Oliver1025/oliver1025.github.io"
+  },
+  "keywords": ["hexo", "blog", "redqueen"],
+  "author": "Oliver",
+  "license": "MIT",
+  "dependencies": {
+    "hexo": "^7.0.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-sitemap": "^3.0.0",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-stylus": "^3.0.0",
+    "hexo-theme-next": "^9.0.0",
+    "hexo-deployer-git": "^4.0.0"
+  }
+}
