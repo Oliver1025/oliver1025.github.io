@@ -57,14 +57,14 @@ lightdark:
 # ---------------------------------------------------------------
 
 favicon:
-  small: /images/logo.svg
-  medium: /images/logo.svg
-  apple_touch_icon: /images/logo.svg
-  safari_pinned_tab: /images/logo.svg
+  small: /images/redqueen-logo.png
+  medium: /images/redqueen-logo.png
+  apple_touch_icon: /images/redqueen-logo.png
+  safari_pinned_tab: /images/redqueen-logo.png
   #android_manifest: /manifest.json
 
 # Custom Logo (Warning: Do not support scheme Mist)
-custom_logo: /images/logo.svg
+custom_logo: /images/redqueen-logo.png
 
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/about/cclicenses/
