@@ -95,7 +95,7 @@ GET /api/openplatform/coding_plan/remains
 
 ### 策略一：选择便宜的模型做简单任务
 
-不是所有任务都需要 GPT-4o。查个天气、问个时间，用 MiniMax-M2 就够了。复杂推理再用 Sonnet 或 Opus。
+不是所有任务都需要 GPT-4o。查个天气、问个时间，用 MiniMax-M2 就够了。复杂推理再用 Sonnet 或 Opus。角色扮演用 M2-her，性价比极高。
 
 ### 策略二：控制上下文长度
 

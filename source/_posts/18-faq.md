@@ -43,7 +43,7 @@ openclaw doctor
 
 这个命令会检查常见问题并给出修复建议，聪哥优先试这个。
 
-## Q2：微信/飞书机器人没有响应？
+## Q2：微信机器人没有响应？
 
 **A：** 分几步排查：
 
@@ -97,9 +97,8 @@ openclaw gateway start --verbose
 {
   "plugins": {
     "entries": {
-      "feishu": { ... },
-      "qq": { ... },
-      "weixin": { ... }
+      "weixin": { ... },
+      "qq": { ... }
     }
   }
 }

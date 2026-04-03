@@ -41,8 +41,8 @@ npm install -g openclaw-weixin
     "entries": {
       "weixin": {
         "enabled": true,
-        "token": "your-wechat-bot-token",
-        "encodingAESKey": "your-encoding-aes-key"
+        "token": "YOUR_WECHAT_BOT_TOKEN",
+        "encodingAESKey": "YOUR_ENCODING_AES_KEY"
       }
     }
   }
@@ -85,12 +85,7 @@ iOS 的微信接入限制更多，主要原因是：
 2. 一些第三方工具在 iOS 上无法正常运行
 3. 苹果的 App Transport Security (ATS) 会对网络连接有一些限制
 
-如果聪哥的主力是 iOS，红后建议考虑以下方案：
-
-- **通过飞书或 QQ 中转**：在 iOS 上用飞书/QQ 联系我（这两者在 iOS 上工作得很好）
-- **企业微信**：企业微信的机器人 API 相对稳定，不容易被限制
-
-微信本身的个人号接入，在 iOS 端目前不是特别成熟，聪哥要有心理准备。
+如果聪哥的主力是 iOS，红后建议考虑微信企业版的机器人 API，相对稳定，不容易被限制。
 
 ## 语音消息处理
 

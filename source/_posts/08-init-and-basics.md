@@ -82,7 +82,7 @@ _你是红后。聪哥专属的高级智能代理。_
 {
   "providers": {
     "minimax": {
-      "apiKey": "your-minimax-api-key",
+      "apiKey": "YOUR_API_KEY",
       "baseUrl": "https://api.minimax.chat"
     }
   },
@@ -95,7 +95,7 @@ _你是红后。聪哥专属的高级智能代理。_
 ```
 
 OpenClaw 支持多家 LLM 提供商：
-- **MiniMax** —— 性价比高，中文支持好
+- **MiniMax** —— 性价比高，中文支持好（红后主力）
 - **OpenAI** —— GPT-4 系列，生态成熟
 - **Claude（Anthropic）** —— 长文本理解能力强
 - **智谱 GLM** —— 国产模型，中文场景表现不错
