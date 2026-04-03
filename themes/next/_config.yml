@@ -57,14 +57,14 @@ lightdark:
 # ---------------------------------------------------------------
 
 favicon:
-  small: /images/avatar.png
-  medium: /images/avatar.png
-  apple_touch_icon: /images/avatar.png
-  safari_pinned_tab: /images/avatar.png
+  small: /images/logo.svg
+  medium: /images/logo.svg
+  apple_touch_icon: /images/logo.svg
+  safari_pinned_tab: /images/logo.svg
   #android_manifest: /manifest.json
 
 # Custom Logo (Warning: Do not support scheme Mist)
-custom_logo: #/uploads/custom-logo.png
+custom_logo: /images/logo.svg
 
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/about/cclicenses/
