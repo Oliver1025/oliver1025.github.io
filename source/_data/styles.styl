@@ -50,43 +50,52 @@ body {
 html { scroll-behavior: smooth; }
 
 // ---------- Header ----------
-.header {
-  background: $bg-card !important;
-  box-shadow: 0 1px 0 $border-light !important;
-  border-bottom: 1px solid $border-light;
-  // 顶部品牌红色细线
-  border-top: 3px solid $red;
+// site-brand-container 保持主题色（深色），里面的文字必须是白色
+.site-brand-container {
+  background: $red !important;
+  padding: 12px 0;
 }
 
 .site-meta {
-  color: $text-primary;
-  padding: 20px 0 16px;
+  color: white;
+  padding: 10px 0 8px;
+}
+
+// Logo line (装饰性分隔线)
+.logo-line {
+  background: rgba(255,255,255,0.5) !important;
+  height: 20px !important;
+  margin: 0 8px;
 }
 
 .site-title {
-  color: $text-primary !important;
-  font-size: 1.35em;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  color: white !important;
+  font-size: 1.7em !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
 
 .site-subtitle {
-  color: $text-secondary !important;
-  font-size: 0.78em;
-  letter-spacing: 1px;
-  margin-top: 2px;
+  color: rgba(255,255,255,0.8) !important;
+  font-size: 0.9em !important;
+  letter-spacing: 2px;
+  margin-top: 4px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 // ---------- Navigation ----------
 .menu {
   padding: 0;
+  background: $bg-card;
 }
 
+// 菜单在白底上，用深色文字
 .menu .menu-item a {
   color: $text-secondary !important;
-  font-size: 0.82em;
+  font-size: 0.85em;
   letter-spacing: 0.5px;
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 6px;
   transition: all 0.2s ease;
 
