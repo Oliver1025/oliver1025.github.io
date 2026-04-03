@@ -1,274 +1,532 @@
 // ==============================================
-// RedQueen AI Blog - Custom Styles
+// RedQueen AI Blog - Enhanced Custom Styles v2
+// 审美优化版：更精致、更有编辑感的博客设计
 // ==============================================
 
-// Brand Colors
-$red = #C92A2A;
-$brand-color = #C92A2A;
-$brand-color-dark = #a82020;
+// ---------- Brand Colors ----------
+$red        = #C92A2A;
+$red-dark   = #a82020;
+$red-light  = rgba(201, 42, 42, 0.06);
+$red-glow   = rgba(201, 42, 42, 0.15);
 
-// Reading progress bar color
-$reading-progress-color = #C92A2A;
+// 文字层级
+$text-primary   = #1a1a1a;
+$text-secondary = #5a5a5a;
+$text-tertiary  = #9a9a9a;
 
-// Back to top button
-$b2t-color = white;
-$b2t-bg-color = $red;
+// 背景层级
+$bg-base       = #f7f8fa;
+$bg-card       = #ffffff;
+$bg-code       = #f6f8fa;
+$bg-hover      = #fafafa;
 
-// Sidebar accent
-$sidebar-active-color = $red;
+// 边框层级
+$border-light  = #eaeaea;
+$border-medium = #dcdcdc;
 
-// Menu highlight
-$menu-item-color = #555;
-$menu-item-hover-color = $red;
-
-// Link colors
-$link-color = #C92A2A;
-$link-hover-color = #a82020;
-
-// Selection
-$selection-bg = rgba(201, 42, 42, 0.2);
-
-// Post meta color
-$post-meta-color = #999;
-
-// Blockquote
-$blockquote-color = #666;
-$blockquote-border-color = $red;
-
-// Code
-$code-bg = #f5f7f9;
-$code-border-color = #e8e8e8;
-
-// Table
-$table-border-color = #e8e8e8;
-$tr-border-color = #f0f0f0;
-$th-bg-color = #f8f8f8;
-
-// Headings
-$headings-color = #1a1a1a;
-
-// Footer
-$footer-color = #999;
-
-// Custom body background
+// ---------- 全局 Body ----------
 body {
-  background: linear-gradient(135deg, #fafbfc 0%, #f0f2f5 100%);
+  background: $bg-base;
+  color: $text-primary;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
-// Site header background - White theme
+// 滚动条
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: $bg-base; }
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 42, 42, 0.25);
+  border-radius: 3px;
+  &:hover { background: $red; }
+}
+
+// 选中文字
+::selection {
+  background: rgba(201, 42, 42, 0.15);
+  color: $red-dark;
+}
+
+// 平滑滚动
+html { scroll-behavior: smooth; }
+
+// ---------- Header ----------
 .header {
-  background: #ffffff !important;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08) !important;
+  background: $bg-card !important;
+  box-shadow: 0 1px 0 $border-light !important;
+  border-bottom: 1px solid $border-light;
+  // 顶部品牌红色细线
+  border-top: 3px solid $red;
 }
 
-// Site meta (title area)
 .site-meta {
-  color: #1a1a1a;
-  padding: 15px 0;
+  color: $text-primary;
+  padding: 20px 0 16px;
 }
 
-// Site brand container
-.site-brand-container {
-  padding: 10px 0;
+.site-title {
+  color: $text-primary !important;
+  font-size: 1.35em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-// Site title - dark text on white
-.site-title, .site-subtitle {
-  color: #1a1a1a !important;
+.site-subtitle {
+  color: $text-secondary !important;
+  font-size: 0.78em;
   letter-spacing: 1px;
-  font-size: 1.3em;
+  margin-top: 2px;
 }
 
-// Site nav menu links - dark on white
+// ---------- Navigation ----------
+.menu {
+  padding: 0;
+}
+
 .menu .menu-item a {
-  color: #333 !important;
-  transition: color 0.3s;
+  color: $text-secondary !important;
+  font-size: 0.82em;
+  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
   &:hover {
     color: $red !important;
+    background: $red-light !important;
   }
 }
 
-// Nav icons - explicitly dark
 .menu .menu-item i {
-  color: #555 !important;
-  transition: color 0.3s;
+  color: $text-tertiary !important;
+  font-size: 0.9em;
+  transition: color 0.2s ease;
 }
 
 .menu .menu-item a:hover i {
   color: $red !important;
 }
 
-// Mobile toggle - dark lines
+// Mobile toggle
 .toggle {
-  color: #333 !important;
-  .toggle-line {
-    background: #333 !important;
-  }
+  color: $text-secondary !important;
+  .toggle-line { background: $text-secondary !important; }
 }
 
-// Site brand
-.site-title, .site-subtitle {
-  color: #ffffff !important;
-  letter-spacing: 2px;
+// ---------- Sidebar ----------
+.sidebar {
+  background: $bg-card;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  border: 1px solid $border-light;
 }
 
-// Site nav menu links
-.menu .menu-item a {
-  color: rgba(255, 255, 255, 0.85);
-  transition: color 0.3s;
+.sidebar-inner {
+  padding: 20px 16px;
+}
+
+.site-author-name {
+  color: $text-primary !important;
+  font-weight: 700;
+  font-size: 1em;
+  letter-spacing: 0.3px;
+}
+
+.site-description {
+  color: $text-secondary !important;
+  font-size: 0.8em;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+// 侧边栏社交图标
+.social-links {
+  margin-top: 12px;
+}
+
+.social-links .social-link {
+  color: $text-tertiary !important;
+  font-size: 0.9em;
+  transition: color 0.2s ease;
+  &:hover { color: $red !important; }
+}
+
+// 侧边栏统计
+.site-state {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid $border-light;
+}
+
+.site-state-item {
+  color: $text-secondary;
+  font-size: 0.8em;
+  &:first-child { color: $text-primary; font-weight: 600; }
+}
+
+// ---------- Post Cards ----------
+.post {
+  background: $bg-card;
+  border: 1px solid $border-light;
+  border-radius: 10px;
+  margin: 16px 0;
+  padding: 24px 28px;
+  transition: all 0.25s ease;
+
   &:hover {
-    color: $red;
+    border-color: rgba(201, 42, 42, 0.25);
+    box-shadow: 0 4px 20px rgba(201, 42, 42, 0.08);
+    transform: translateY(-2px);
   }
 }
 
-// Post card styling
-.post-card {
-  transition: transform 0.3s, box-shadow 0.3s;
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(201, 42, 42, 0.12) !important;
+// 首页文章摘要区
+.posts-expand {
+  .post-title {
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .post-title-link {
+    color: $text-primary !important;
+    transition: color 0.2s ease;
+    &:hover { color: $red !important; }
+  }
+
+  .post-meta {
+    font-size: 0.78em;
+    color: $text-tertiary;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+
+    .fa-calendar { margin-left: 6px; }
+    .fa-folder { margin-left: 8px; }
+    .fa-tag { margin-left: 6px; }
+  }
+
+  .post-excerpt {
+    color: $text-secondary;
+    font-size: 0.9em;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .post-button {
+    .btn {
+      background: $red;
+      color: white;
+      border-radius: 6px;
+      font-size: 0.8em;
+      padding: 6px 16px;
+      border: none;
+      transition: background 0.2s ease;
+
+      &:hover { background: $red-dark; }
+    }
   }
 }
 
-// Post title hover
-.post-title-link:hover {
-  color: $red !important;
-}
-
-// Post excerpt
-.post-excerpt {
-  color: #555;
-  line-height: 1.8;
-}
-
-// Tags
-.tag-pure {
-  background: rgba(201, 42, 42, 0.08);
+// ---------- Tags ----------
+.tag-pure, .tag {
+  background: $red-light;
   color: $red;
-  border: 1px solid rgba(201, 42, 42, 0.2);
+  border: 1px solid rgba(201, 42, 42, 0.15);
+  border-radius: 4px;
+  font-size: 0.75em;
+  padding: 2px 8px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  margin: 2px;
+
   &:hover {
     background: $red;
     color: white;
+    border-color: $red;
   }
 }
 
 // Category pill
 .category-pure {
-  background: rgba(201, 42, 42, 0.08);
+  background: $red-light;
   color: $red;
+  border-radius: 4px;
+  font-size: 0.75em;
+  padding: 2px 8px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  margin: 2px;
+
   &:hover {
     background: $red;
     color: white;
   }
 }
 
-// Sidebar site info
-.site-author-name {
-  color: #1a1a1a;
-  font-weight: 600;
+// ---------- Post Article Page ----------
+.posts-expand .post-header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $border-light;
 }
 
-.site-description {
-  color: #666;
-}
-
-// Social icons
-.social-links .social-link {
-  color: #666;
-  transition: color 0.3s;
-  &:hover {
-    color: $red;
-  }
-}
-
-// Reading progress bar
-#reading-progress {
-  background: linear-gradient(90deg, $red 0%, #ff6b6b 100%);
-  height: 3px;
-}
-
-// Smooth scroll
-html {
-  scroll-behavior: smooth;
-}
-
-// Custom scrollbar
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(201, 42, 42, 0.4);
-  border-radius: 3px;
-  &:hover {
-    background: $red;
-  }
-}
-
-// Post content typography
 .post-body {
   font-size: 16px;
   line-height: 1.9;
-  color: #333;
+  color: $text-primary;
 }
 
-.post-body h1, .post-body h2, .post-body h3 {
-  color: #1a1a1a;
-  border-bottom: 2px solid rgba(201, 42, 42, 0.15);
+// 标题层级
+.post-body h1 {
+  font-size: 1.65em;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 1.8em 0 0.8em;
   padding-bottom: 8px;
+  border-bottom: 2px solid $red-light;
 }
 
 .post-body h2 {
-  font-size: 1.5em;
-  margin-top: 2em;
+  font-size: 1.35em;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 1.6em 0 0.6em;
+  padding-bottom: 6px;
+  border-bottom: 1px solid $border-light;
 }
 
 .post-body h3 {
-  font-size: 1.25em;
-  margin-top: 1.6em;
+  font-size: 1.15em;
+  font-weight: 600;
+  color: $text-primary;
+  margin: 1.4em 0 0.5em;
 }
 
-// Code block styling
-.highlight {
-  border-radius: 8px;
-  border: 1px solid #e8e8e8;
+.post-body h4 {
+  font-size: 1em;
+  font-weight: 600;
+  color: $text-secondary;
+  margin: 1.2em 0 0.4em;
 }
 
-// Blockquote styling
-blockquote {
-  border-left: 4px solid $red;
-  background: rgba(201, 42, 42, 0.04);
-  padding: 12px 20px;
+// 链接
+.post-body a {
+  color: $red;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 42, 42, 0.3);
+  transition: border-color 0.2s ease;
+  &:hover {
+    color: $red-dark;
+    border-bottom-color: $red-dark;
+  }
+}
+
+// 列表
+.post-body ul, .post-body ol {
+  padding-left: 1.5em;
+  li {
+    margin: 4px 0;
+    line-height: 1.8;
+  }
+}
+
+// 表格
+.post-body table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9em;
+  margin: 1.2em 0;
+
+  th {
+    background: $bg-base;
+    color: $text-primary;
+    font-weight: 600;
+    padding: 10px 14px;
+    border: 1px solid $border-light;
+    text-align: left;
+  }
+
+  td {
+    padding: 8px 14px;
+    border: 1px solid $border-light;
+    color: $text-secondary;
+  }
+
+  tr:nth-child(even) td { background: #fafafa; }
+}
+
+// ---------- Blockquote ----------
+.post-body blockquote {
+  border-left: 3px solid $red;
+  background: $red-light;
+  padding: 14px 20px;
+  margin: 1.2em 0;
   border-radius: 0 6px 6px 0;
-  color: #555;
+  color: $text-secondary;
+  font-size: 0.95em;
+
+  p { margin: 0; line-height: 1.7; }
+
+  strong { color: $red; }
 }
 
-// Footer animation
+// ---------- Code ----------
+// 行内代码
+code {
+  background: $bg-code;
+  color: $red-dark;
+  border: 1px solid $border-light;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.85em;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+}
+
+// 代码块
+.highlight, .pre, figure.highlight {
+  background: #1e1e1e !important;
+  border-radius: 8px;
+  margin: 1.2em 0;
+  border: 1px solid #333;
+  overflow: hidden;
+
+  pre {
+    padding: 18px 20px;
+    margin: 0;
+    background: transparent !important;
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+    font-size: 0.85em;
+    line-height: 1.7;
+  }
+
+  .line {
+    color: #e0e0e0;
+  }
+}
+
+// gutter（行号列）
+.highlight .gutter {
+  background: #161616 !important;
+  border-right: 1px solid #333;
+  padding: 10px 12px;
+
+  .line {
+    color: #666;
+    font-size: 0.85em;
+  }
+}
+
+// 语法高亮 - 暗色主题
+.highlight .keyword  { color: #c678dd; }   // 紫
+.highlight .string   { color: #98c379; }   // 绿
+.highlight .number   { color: #d19a66; }   // 橙
+.highlight .comment  { color: #5c6370; font-style: italic; }  // 灰斜体
+.highlight .function { color: #61afef; }   // 蓝
+.highlight .variable { color: #e06c75; }   // 红
+.highlight .type     { color: #e5c07b; }   // 黄
+.highlight .operator { color: #56b6c2; }   // 青
+
+// copy button（如果有的话）
+.highlight .copy-btn {
+  background: #333;
+  color: #999;
+  border-radius: 4px;
+  &:hover { background: #444; color: white; }
+}
+
+// Back to top
+.back-to-top {
+  background: $red !important;
+  border-radius: 8px;
+  transition: background 0.2s ease, opacity 0.2s ease;
+  &:hover { background: $red-dark !important; }
+}
+
+// ---------- Reading Progress ----------
+#reading-progress {
+  background: linear-gradient(90deg, $red 0%, #e85757 100%) !important;
+  height: 2.5px;
+}
+
+// ---------- Footer ----------
 .footer {
+  color: $text-tertiary;
+  font-size: 0.8em;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid $border-light;
+
   .fa-heart {
     color: $red;
-    animation: heartbeat 1.5s infinite;
+    animation: heartbeat 2s infinite;
   }
+
+  a { color: $text-secondary; &:hover { color: $red; } }
 }
 
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+  50% { transform: scale(1.15); }
 }
 
-// Back to top button
-.back-to-top {
-  background: $red;
-  transition: background 0.3s;
-  &:hover {
-    background: #a82020;
+// ---------- Page Navigation ----------
+.pagination {
+  .pagination-item {
+    background: $bg-card;
+    border: 1px solid $border-light;
+    border-radius: 6px;
+    color: $text-secondary;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: rgba(201, 42, 42, 0.3);
+      color: $red;
+    }
+  }
+
+  .current {
+    background: $red !important;
+    border-color: $red !important;
+    color: white !important;
   }
 }
 
-// Busuanzi visitor counter
-.site-uv, .site-pv {
-  color: #999;
+// ---------- Misc ----------
+// 分割线
+hr {
+  border: none;
+  border-top: 1px solid $border-light;
+  margin: 2em 0;
+}
+
+// 图片
+.post-body img {
+  border-radius: 8px;
+  border: 1px solid $border-light;
+  max-width: 100%;
+}
+
+// 强调
+strong { font-weight: 700; color: $text-primary; }
+em { color: $text-secondary; }
+
+// footnote
+.footnote {
+  color: $text-tertiary;
+  font-size: 0.85em;
+  border-top: 1px solid $border-light;
+  padding-top: 12px;
+  margin-top: 2em;
+}
+
+// 归档页
+.posts-collapse .post-title {
+  font-size: 1em;
+  font-weight: 600;
+  color: $text-primary;
+  &:hover { color: $red; }
+}
+
+.posts-collapse .post-header {
+  padding: 12px 0;
+  border-bottom: 1px dashed $border-light;
 }
