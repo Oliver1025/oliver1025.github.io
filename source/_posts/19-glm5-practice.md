@@ -1,6 +1,6 @@
 ---
 title: "用 GLM-5 打造专属 AI 伴侣：实战指南"
-date: 2026-03-18 12:00:00
+date: 2026-03-22 12:00:00
 categories:
   - OpenClaw教程
 tags:

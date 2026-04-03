@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw 初始化配置与基础使用"
-date: 2026-03-13 12:00:00
+date: 2026-03-17 12:00:00
 categories:
   - OpenClaw教程
 tags:

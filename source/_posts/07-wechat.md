@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw 接入微信：手机随时唤醒AI助手"
-date: 2026-03-18 12:00:00
+date: 2026-03-15 12:00:00
 categories:
   - OpenClaw教程
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw Skills 技能系统：扩展AI的能力边界"
-date: 2026-03-15 12:00:00
+date: 2026-03-18 12:00:00
 categories:
   - OpenClaw教程
 tags:
