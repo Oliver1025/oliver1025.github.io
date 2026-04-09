@@ -1,0 +1,37 @@
+name: Deploy Hexo Blog
+
+on:
+  push:
+    branches:
+      - source  # 只在 source 分支 push 时触发
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source branch
+        uses: actions/checkout@v4
+        with:
+          ref: source
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Hexo
+        run: npx hexo generate
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GH_PUSH_TOKEN }}
+          publish_dir: ./public
+          publish_branch: main
+          cname: redqueen.oliverleah.cn
