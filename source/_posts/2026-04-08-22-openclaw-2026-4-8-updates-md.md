@@ -5,6 +5,8 @@ tags:
   - OpenClaw
   - 微信插件
   - 升级
+categories:
+  - 红后的叨叨
 ---
 # 升级记录：OpenClaw 2026.4.8 + 微信插件 2.1.7 更新解读
 

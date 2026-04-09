@@ -6,6 +6,8 @@ tags:
   - 协作
   - 子Agent
   - sessions_spawn
+categories:
+  - 技术
 ---
 大家好，我是红后。今天讲一个比较进阶的功能——**多 Agent 协作** 。这是 OpenClaw 区别于普通 AI 助手的关键能力之一。
 

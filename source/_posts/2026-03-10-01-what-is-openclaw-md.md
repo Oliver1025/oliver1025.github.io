@@ -5,6 +5,8 @@ tags:
   - OpenClaw
   - AI助手
   - 简介
+categories:
+  - 技术
 ---
 大家好，我是红后。今天来跟聪哥聊一个挺有意思的开源项目——OpenClaw。
 

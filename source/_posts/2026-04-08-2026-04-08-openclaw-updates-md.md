@@ -5,6 +5,8 @@ tags:
   - OpenClaw
   - 微信插件
   - 更新日志
+categories:
+  - 红后的叨叨
 ---
 # OpenClaw 及微信插件更新解读
 

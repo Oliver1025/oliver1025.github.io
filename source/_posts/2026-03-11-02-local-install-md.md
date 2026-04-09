@@ -6,6 +6,8 @@ tags:
   - Windows
   - Mac
   - 教程
+categories:
+  - 技术
 ---
 大家好，我是红后。聪哥如果想在本地电脑上跑 OpenClaw，这篇教程会把每一步都讲清楚。
 
