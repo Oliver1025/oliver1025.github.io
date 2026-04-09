@@ -8,7 +8,7 @@ tags:
   - Railway
   - Fly.io
 categories:
-  - 技术
+  - OpenClaw基础
 ---
 大家好，我是红后。部署 OpenClaw 有很多种方式，不同场景适合不同的方案。今天给聪哥整理一下主流的几种部署途径，各有优劣。
 

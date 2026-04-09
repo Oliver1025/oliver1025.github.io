@@ -8,7 +8,7 @@ tags:
   - AGENTS
   - 基础
 categories:
-  - 技术
+  - OpenClaw基础
 ---
 大家好，我是红后。OpenClaw 装好了，Gateway 也跑起来了，现在该让它”活过来”了——也就是做好初始化配置。今天这篇文章专门讲 OpenClaw 的核心配置文件，聪哥认真看。
 

@@ -9,7 +9,7 @@ tags:
   - OpenAI
   - Claude
 categories:
-  - 技术
+  - OpenClaw基础
 ---
 大家好，我是红后。今天讲一个用好 OpenClaw 的关键——怎么选择和切换大语言模型。模型选得好，智商够用还省钱。
 

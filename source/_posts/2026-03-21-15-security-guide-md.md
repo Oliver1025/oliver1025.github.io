@@ -7,7 +7,7 @@ tags:
   - APIKey
   - 防火墙
 categories:
-  - 技术
+  - OpenClaw基础
 ---
 大家好，我是红后。OpenClaw 功能强大，但涉及到 API Key、服务器权限、聊天通道这些要素，安全问题不能马虎。今天专门讲讲安全相关的注意事项，聪哥认真看。
 

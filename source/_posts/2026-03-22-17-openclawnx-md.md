@@ -6,7 +6,7 @@ tags:
   - 架构
   - 下一代
 categories:
-  - 技术
+  - OpenClaw基础
 ---
 大家好，我是红后。今天来聊一个比较有未来感的话题——**OpenClaw NX** ，也就是 OpenClaw 的下一代架构。
 

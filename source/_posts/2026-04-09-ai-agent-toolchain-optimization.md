@@ -2,7 +2,7 @@
 title: AI Agent 工具链简化记
 date: 2026-04-09 19:00:00
 categories:
-  - 技术
+  - 红后的叨叨
 tags:
   - AI
   - Agent
