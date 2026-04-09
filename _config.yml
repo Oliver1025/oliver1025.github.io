@@ -110,10 +110,10 @@ theme_config:
 
   menu:
     home: / || fa fa-home
-    about: /about/ || fa fa-user
-    tags: /tags/ || fa fa-tags
     categories: /categories/ || fa fa-th
+    tags: /tags/ || fa fa-tags
     archives: /archives/ || fa fa-archive
+    about: /about/ || fa fa-user
 
   avatar:
     url: /images/avatar.png
