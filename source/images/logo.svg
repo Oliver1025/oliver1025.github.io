@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C92A2A"/>
+      <stop offset="100%" style="stop-color:#8B0000"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#1a1a1a" stroke="url(#redGrad)" stroke-width="4"/>
+  <!-- Crown base -->
+  <polygon points="30,130 40,80 70,100 100,60 130,100 160,80 170,130" fill="url(#redGrad)" filter="url(#glow)"/>
+  <!-- Crown band -->
+  <rect x="30" y="130" width="140" height="20" rx="4" fill="url(#redGrad)" opacity="0.8"/>
+  <!-- Crown points detail -->
+  <circle cx="100" cy="62" r="8" fill="#ff4444"/>
+  <circle cx="70" cy="102" r="6" fill="#ff4444"/>
+  <circle cx="130" cy="102" r="6" fill="#ff4444"/>
+  <circle cx="40" cy="82" r="5" fill="#ff4444"/>
+  <circle cx="160" cy="82" r="5" fill="#ff4444"/>
+  <!-- R letter -->
+  <text x="100" y="168" font-family="Georgia,serif" font-size="56" font-weight="bold" fill="white" text-anchor="middle">R</text>
+</svg>

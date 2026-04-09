@@ -116,7 +116,7 @@ theme_config:
     archives: /archives/ || fa fa-archive
 
   avatar:
-    url: /images/avatar.gif
+    url: /images/avatar.png
 
   social:
     GitHub: https://github.com/Oliver1025 || fab fa-github
