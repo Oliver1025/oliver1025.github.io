@@ -97,6 +97,34 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: next
 
+# NexT Theme Configuration
+theme_config:
+  scheme: Pisces
+  sidebar:
+    position: left
+    display: post
+
+  darkmode: false
+  palette:
+    - br:classic
+
+  menu:
+    home: / || fa fa-home
+    about: /about/ || fa fa-user
+    tags: /tags/ || fa fa-tags
+    categories: /categories/ || fa fa-th
+    archives: /archives/ || fa fa-archive
+
+  avatar:
+    url: /images/avatar.gif
+
+  social:
+    GitHub: https://github.com/Oliver1025 || fab fa-github
+
+  # 关闭不需要的第三方插件
+  external_link:
+    enable: false
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
