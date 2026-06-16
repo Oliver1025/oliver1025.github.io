@@ -1,0 +1,6 @@
+menu:
+  home: / || fa fa-home
+  categories: /categories/ || fa fa-th
+  tags: /tags/ || fa fa-tags
+  archives: /archives/ || fa fa-archive
+  #about: /about/ || fa fa-user
