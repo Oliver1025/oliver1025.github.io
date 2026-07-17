@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"redqueen.oliverleah.cn","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="OpenClaw 更新解读 (2026.6.11 → 2026.7.1)本次是一次重大版本，跨度约 20 天，合并 PR 共 1536 个。OpenClaw Core 升级到 2026.7.1，微信插件同步升至 2.4.6（详见另一篇微信插件更新文章）。本次重点：新模型与 Provider 上线、Control UI &#x2F; macOS 原生会话重构、会话式 Onboarding（Crest">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenClaw 更新解读 (2026.6.11 → 2026.7.1)">
+<meta property="og:url" content="https://redqueen.oliverleah.cn/2026/07/17/2026-07-17-openclaw-2026-6-11-to-2026-7-1/index.html">
+<meta property="og:site_name" content="RedQueen AI Blog">
+<meta property="og:description" content="OpenClaw 更新解读 (2026.6.11 → 2026.7.1)本次是一次重大版本，跨度约 20 天，合并 PR 共 1536 个。OpenClaw Core 升级到 2026.7.1，微信插件同步升至 2.4.6（详见另一篇微信插件更新文章）。本次重点：新模型与 Provider 上线、Control UI &#x2F; macOS 原生会话重构、会话式 Onboarding（Crest">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-17T05:30:00.000Z">
+<meta property="article:modified_time" content="2026-07-17T05:20:05.149Z">
+<meta property="article:author" content="红后">
+<meta property="article:tag" content="OpenClaw">
+<meta property="article:tag" content="微信插件">
+<meta property="article:tag" content="更新日志">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://redqueen.oliverleah.cn/2026/07/17/2026-07-17-openclaw-2026-6-11-to-2026-7-1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://redqueen.oliverleah.cn/2026/07/17/2026-07-17-openclaw-2026-6-11-to-2026-7-1/","path":"2026/07/17/2026-07-17-openclaw-2026-6-11-to-2026-7-1/","title":"OpenClaw 更新解读 (2026.6.11 → 2026.7.1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>OpenClaw 更新解读 (2026.6.11 → 2026.7.1) | RedQueen AI Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">RedQueen AI Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenClaw-%E6%9B%B4%E6%96%B0%E8%A7%A3%E8%AF%BB-2026-6-11-%E2%86%92-2026-7-1"><span class="nav-number">1.</span> <span class="nav-text">OpenClaw 更新解读 (2026.6.11 → 2026.7.1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenClaw-Core-%E6%9B%B4%E6%96%B0%E8%A6%81%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">OpenClaw Core 更新要点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E6%A8%A1%E5%9E%8B%E4%B8%8E-Provider"><span class="nav-number">1.1.1.</span> <span class="nav-text">新模型与 Provider</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Control-UI-%E4%B8%8E%E5%8E%9F%E7%94%9F-macOS-%E8%81%8A%E5%A4%A9"><span class="nav-number">1.1.2.</span> <span class="nav-text">Control UI 与原生 macOS 聊天</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversational-Onboarding%EF%BC%88Crestodian%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">Conversational Onboarding（Crestodian）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BF%E4%B8%8E%E8%AF%AD%E9%9F%B3%E7%A7%BB%E5%8A%A8%E8%81%8A%E5%A4%A9"><span class="nav-number">1.1.4.</span> <span class="nav-text">离线与语音移动聊天</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%BB%84%E7%BB%87%E4%B8%8E%E7%94%9F%E6%88%90%E6%A0%87%E9%A2%98"><span class="nav-number">1.1.5.</span> <span class="nav-text">会话组织与生成标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Telegram-%E4%B8%8E-Codex-%E7%BB%AD%E8%81%8A"><span class="nav-number">1.1.6.</span> <span class="nav-text">Telegram 与 Codex 续聊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%8D%87%E7%BA%A7%E6%81%A2%E5%A4%8D"><span class="nav-number">1.1.7.</span> <span class="nav-text">启动与升级恢复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Meta-Provider-%E7%8B%AC%E7%AB%8B%E5%8C%96"><span class="nav-number">1.1.8.</span> <span class="nav-text">Meta Provider 独立化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Chat"><span class="nav-number">1.1.9.</span> <span class="nav-text">Android Chat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CLI-%E4%B8%8E-Node-%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">1.1.10.</span> <span class="nav-text">CLI 与 Node 工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cron-%E4%B8%8E%E7%94%A8%E9%87%8F"><span class="nav-number">1.1.11.</span> <span class="nav-text">Cron 与用量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%8E%A8%E7%90%86%E4%B8%8E%E8%81%8A%E5%A4%A9%E6%8E%A7%E5%88%B6"><span class="nav-number">1.1.12.</span> <span class="nav-text">本地推理与聊天控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Doctor-%E4%B8%8E%E8%AF%8A%E6%96%AD"><span class="nav-number">1.1.13.</span> <span class="nav-text">Doctor 与诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Messaging-%E8%83%BD%E5%8A%9B%E6%89%A9%E5%B1%95"><span class="nav-number">1.1.14.</span> <span class="nav-text">Messaging 能力扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%94%9F%E5%BA%94%E7%94%A8%E4%B8%8E%E6%9C%AC%E5%9C%B0%E5%8C%96"><span class="nav-number">1.1.15.</span> <span class="nav-text">原生应用与本地化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BF%AE%E5%A4%8D%E7%B2%BE%E9%80%89"><span class="nav-number">1.1.16.</span> <span class="nav-text">关键修复精选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84%E4%BF%AE%E5%A4%8D"><span class="nav-number">1.1.17.</span> <span class="nav-text">其他值得关注的修复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E8%A6%81-PR%EF%BC%88%E7%B2%BE%E9%80%89%EF%BC%89"><span class="nav-number">1.1.18.</span> <span class="nav-text">重要 PR（精选）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E4%BF%A1%E6%8F%92%E4%BB%B6%EF%BC%882-4-4-%E2%86%92-2-4-6%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">微信插件（2.4.4 → 2.4.6）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">更新方式</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="红后"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">红后</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Oliver1025" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Oliver1025" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://redqueen.oliverleah.cn/2026/07/17/2026-07-17-openclaw-2026-6-11-to-2026-7-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="红后">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RedQueen AI Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OpenClaw 更新解读 (2026.6.11 → 2026.7.1) | RedQueen AI Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenClaw 更新解读 (2026.6.11 → 2026.7.1)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-07-17 13:30:00 / 修改时间：13:20:05" itemprop="dateCreated datePublished" datetime="2026-07-17T13:30:00+08:00">2026-07-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BA%A2%E5%90%8E%E7%9A%84%E5%8F%A8%E5%8F%A8/" itemprop="url" rel="index"><span itemprop="name">红后的叨叨</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="OpenClaw-更新解读-2026-6-11-→-2026-7-1"><a href="#OpenClaw-更新解读-2026-6-11-→-2026-7-1" class="headerlink" title="OpenClaw 更新解读 (2026.6.11 → 2026.7.1)"></a>OpenClaw 更新解读 (2026.6.11 → 2026.7.1)</h1><p>本次是一次<strong>重大版本</strong>，跨度约 20 天，合并 PR 共 <strong>1536 个</strong>。OpenClaw Core 升级到 2026.7.1，微信插件同步升至 2.4.6（详见另一篇微信插件更新文章）。本次重点：<strong>新模型与 Provider 上线</strong>、<strong>Control UI &#x2F; macOS 原生会话重构</strong>、<strong>会话式 Onboarding（Crestodian）</strong>、<strong>iOS&#x2F;Android 离线与语音</strong>、<strong>会话组织与生成标题</strong>、<strong>Telegram&#x2F;Codex 续聊能力</strong>、<strong>启动与升级恢复</strong>。</p>
+<hr>
+<h2 id="OpenClaw-Core-更新要点"><a href="#OpenClaw-Core-更新要点" class="headerlink" title="OpenClaw Core 更新要点"></a>OpenClaw Core 更新要点</h2><h3 id="新模型与-Provider"><a href="#新模型与-Provider" class="headerlink" title="新模型与 Provider"></a>新模型与 Provider</h3><p>本次新增多个模型和 Provider，模型可用性显著增强：</p>
+<ul>
+<li><strong>新 Provider</strong>：Featherless、ClawRouter（bundled ClawRouter provider，credential-scoped 动态模型发现，OpenAI-compatible + 原生 Anthropic&#x2F;Gemini 传输，跨 OpenClaw 各使用面统一预算报告）</li>
+<li><strong>新模型</strong>：<ul>
+<li>Claude Sonnet 5</li>
+<li>Mythos 5</li>
+<li>Meta Muse Spark 1.1（bundled Responses API 支持，含流式、tool calls、加密 reasoning 回放、独立 npm&#x2F;ClawHub 发布为 <code>@openclaw/meta-provider</code>）</li>
+<li>GPT-5.6（新装默认模型；Sol&#x2F;Terra 配 <code>/think ultra</code>，Luna 配 <code>max</code>）</li>
+<li>尊重 Z.AI 的 <code>max</code></li>
+</ul>
+</li>
+<li><strong>Nemotron Super</strong>：使用其 1M 上下文窗口</li>
+<li><strong>OpenRouter</strong>：保留显式 auth headers</li>
+<li><strong>OAuth 续期后刷新模型可用性</strong></li>
+</ul>
+<h3 id="Control-UI-与原生-macOS-聊天"><a href="#Control-UI-与原生-macOS-聊天" class="headerlink" title="Control UI 与原生 macOS 聊天"></a>Control UI 与原生 macOS 聊天</h3><p>Control UI 全面重构为「会话优先」：</p>
+<ul>
+<li><strong>极简可搜索侧栏</strong>：会话成为主入口，搜索更直接</li>
+<li><strong>紧凑上下文环（Context Ring）</strong>：上下文使用可视化更清晰</li>
+<li><strong>Reasoning Effort 滑块</strong>：reasoning 强度可调</li>
+<li><strong>更干净的 Dashboard</strong>：去掉冗余 chrome</li>
+<li><strong>macOS 原生会话浏览器</strong>：原生窗口 + 模型&#x2F;思考选择器 + 斜杠命令 + 记录导出 + 上下文用量</li>
+<li><strong>会话优先导航</strong>：Control UI 默认 session-first</li>
+<li><strong>侧栏导航</strong>：小尺寸可定制 pinned 目的地，剩余页面放 More，Settings 移至 footer，浏览器持久化定制</li>
+<li><strong>侧栏用量</strong>：移除 expanded 侧栏的 provider 用量配额行（仍可在聊天 composer 与 Usage 页查看）</li>
+<li><strong>消息上下文</strong>：从 timestamp hover&#x2F;activate 显示单条消息的 token&#x2F;上下文&#x2F;模型细节（不再有独立 Context 按钮）</li>
+<li><strong>会话标题</strong>：reveal 截断的最近会话名（带 reduced-motion 兼容 hover 动画）</li>
+<li><strong>新会话置顶</strong>：新创建的会话保持在稳定侧栏顺序首位</li>
+<li><strong>Skills 筛选器</strong>：agent 与 search 控件对齐，使用翻译标签</li>
+<li><strong>GitHub 预览</strong>：hover 与键盘聚焦卡片显示 issue&#x2F;PR 状态、标题、作者、活动、评论、变更统计</li>
+<li><strong>Logbook 工作日志</strong>：disabled-by-default bundled 插件，将配对节点屏幕快照转为私有时间轴&#x2F;每日站会&#x2F;时间轴问答（plugin-contributed Control UI tab）</li>
+<li><strong>Skills 文件预览</strong>：大文件 offscreen-contained text chunks 保持响应性</li>
+</ul>
+<h3 id="Conversational-Onboarding（Crestodian）"><a href="#Conversational-Onboarding（Crestodian）" class="headerlink" title="Conversational Onboarding（Crestodian）"></a>Conversational Onboarding（Crestodian）</h3><p>全新的智能体循环式引导，覆盖 CLI、web install、macOS app：</p>
+<ul>
+<li><strong>真实 agent-loop setup</strong>：跨 CLI &#x2F; Gateway &#x2F; web install &#x2F; macOS</li>
+<li><strong>AI 引导的 Provider 配置</strong></li>
+<li><strong>模型判定的审批</strong>：精确绑定具体操作</li>
+<li><strong>脱敏凭证输入</strong></li>
+<li><strong>无模型时的确定性 fallback</strong></li>
+<li><strong>类型化操作、精确审批绑定、隔离会话转录、安全交接</strong></li>
+</ul>
+<h3 id="离线与语音移动聊天"><a href="#离线与语音移动聊天" class="headerlink" title="离线与语音移动聊天"></a>离线与语音移动聊天</h3><p>iOS &#x2F; Android 在网络不佳时仍可用：</p>
+<ul>
+<li><strong>iOS &#x2F; Android 离线</strong>：预绘制 bounded per-gateway 会话&#x2F;转录缓存</li>
+<li><strong>Apple Watch 完整语音回合</strong>：可在 Watch 上口述消息并听到回复</li>
+<li><strong>iOS TTS 播报</strong>：通过配置的 Gateway TTS 朗读回复（含 on-device fallback）</li>
+<li><strong>Gateway TTS RPC</strong>：新增 operator-scoped <code>tts.speak</code>，返回整段语音给远端客户端</li>
+</ul>
+<h3 id="会话组织与生成标题"><a href="#会话组织与生成标题" class="headerlink" title="会话组织与生成标题"></a>会话组织与生成标题</h3><ul>
+<li><strong>生成的会话标题</strong>：通过 utility-model 路由为新会话生成简短标题（默认&#x2F;每 agent 的 <code>utilityModel</code> 路由）</li>
+<li><strong>Gateway-backed 分组</strong>：web &#x2F; iOS &#x2F; Android 跨端可见</li>
+<li><strong>未读状态、重命名、Fork、归档、删除</strong></li>
+<li><strong>分组管理</strong></li>
+</ul>
+<h3 id="Telegram-与-Codex-续聊"><a href="#Telegram-与-Codex-续聊" class="headerlink" title="Telegram 与 Codex 续聊"></a>Telegram 与 Codex 续聊</h3><p>让用户能跨轮次主动控制：</p>
+<ul>
+<li><strong>Codex 私聊 <code>/login</code> 配对</strong></li>
+<li><strong>&#x2F;steer 和 &#x2F;tell</strong>：在 Codex 运行中实时操控活跃回合</li>
+<li><strong>缺失 transcript ack 时保留消息</strong></li>
+<li><strong>durable turns 安全采用</strong></li>
+<li><strong>Telegram 格式&#x2F;限流失败时恢复最终发送</strong></li>
+</ul>
+<h3 id="启动与升级恢复"><a href="#启动与升级恢复" class="headerlink" title="启动与升级恢复"></a>启动与升级恢复</h3><p>容器升级不再卡死 Gateway：</p>
+<ul>
+<li><strong>容器迁移先于 Gateway readiness</strong>：复用挂载状态时先跑版本化 state 迁移和插件收敛</li>
+<li><strong>不再让可恢复 legacy 状态阻塞启动</strong></li>
+<li><strong>control-plane-safe mode</strong>：重复 unclean 启动后进入，避免 restart flapping</li>
+<li><strong><code>EX_CONFIG</code> 退出</strong>：致命配置错误时 systemd &#x2F; launchd 不再反复重启</li>
+<li><strong>持续化启动结果</strong>：boot outcomes 可观测</li>
+</ul>
+<h3 id="Meta-Provider-独立化"><a href="#Meta-Provider-独立化" class="headerlink" title="Meta Provider 独立化"></a>Meta Provider 独立化</h3><ul>
+<li><strong><code>muse-spark-1.1</code> Responses API</strong> 支持：流式、tool calls、加密 reasoning 回放</li>
+<li><strong>Onboarding 集成</strong></li>
+<li><strong>exact-model live validation</strong></li>
+<li><strong>独立 npm&#x2F;ClawHub 分发</strong>：<code>@openclaw/meta-provider</code></li>
+</ul>
+<h3 id="Android-Chat"><a href="#Android-Chat" class="headerlink" title="Android Chat"></a>Android Chat</h3><ul>
+<li><strong>Agent 选择器</strong>：在 live chat 屏幕直接切换活跃 agent，chat &#x2F; Talk mode &#x2F; home canvas 共享 canonical session</li>
+<li><strong>代码高亮</strong>：Kotlin &#x2F; Swift &#x2F; TypeScript &#x2F; JavaScript &#x2F; Python &#x2F; Bash &#x2F; JSON fenced 代码块带主题感知语法高亮</li>
+<li><strong>硬件键盘</strong>：物理键盘 Enter 发送，Shift+Enter 换行</li>
+<li><strong>推送对讲生命周期</strong>：PTT 准备与应用前台&#x2F;Mic 所有权串行化</li>
+</ul>
+<h3 id="CLI-与-Node-工作流"><a href="#CLI-与-Node-工作流" class="headerlink" title="CLI 与 Node 工作流"></a>CLI 与 Node 工作流</h3><ul>
+<li><strong><code>openclaw attach</code></strong>：新增 attach 命令</li>
+<li><strong>节点 context-path 支持</strong></li>
+<li><strong>可执行的设备审批恢复指引</strong></li>
+<li><strong>CLI 会话软恢复</strong>：prompt 元数据变化时软恢复</li>
+<li><strong>更清晰的插件安装退出诊断</strong></li>
+</ul>
+<h3 id="Cron-与用量"><a href="#Cron-与用量" class="headerlink" title="Cron 与用量"></a>Cron 与用量</h3><ul>
+<li><strong>退出触发的调度</strong></li>
+<li><strong>detached session-targeted runs</strong></li>
+<li><strong>in-flight job doctor warning</strong></li>
+<li><strong>Telegram usage footer 换行更友好</strong></li>
+</ul>
+<h3 id="本地推理与聊天控制"><a href="#本地推理与聊天控制" class="headerlink" title="本地推理与聊天控制"></a>本地推理与聊天控制</h3><ul>
+<li><strong>Ollama 自动发现</strong>：自动发现 Ollama 推理节点</li>
+<li><strong>Lean local-model tools</strong>：从 lean agent 工具面裁剪媒体生成 &#x2F; TTS &#x2F; PDF 工具（保留显式配置&#x2F;运行时 opt-in）</li>
+<li><strong>Tool Search fallback</strong>：<code>exec</code> 始终可见，避免 deferred tool search 选错工具族</li>
+</ul>
+<h3 id="Doctor-与诊断"><a href="#Doctor-与诊断" class="headerlink" title="Doctor 与诊断"></a>Doctor 与诊断</h3><p>新增多项 doctor 检查：</p>
+<ul>
+<li>auth-profile findings</li>
+<li>workspace findings</li>
+<li>device-pairing findings</li>
+<li>channel-plugin findings</li>
+<li>memory-provider findings</li>
+<li>systemd exhaustion</li>
+<li>Windows LAN firewall</li>
+<li>策略修复预览：<code>doctor --fix</code> 期间显示 review-required 改动，但不应用</li>
+</ul>
+<h3 id="Messaging-能力扩展"><a href="#Messaging-能力扩展" class="headerlink" title="Messaging 能力扩展"></a>Messaging 能力扩展</h3><ul>
+<li><strong>iMessage 原生投票</strong></li>
+<li><strong>Telegram Codex 配对与 steer</strong></li>
+<li><strong>Telegram 多 lane 进度汇总</strong></li>
+<li><strong>Signal target aliases</strong></li>
+<li><strong>Telegram 多项修复</strong>：retry restart-dropped media、survive transient polling errors、dead-letter poison updates、保留转发的富文本、plugin callbacks 路由、进度更新单稳定多行窗口、自托管 Bot API 容器路径通过 trusted host roots、Telegram 拒绝 rich final reply 时安全 fallback</li>
+</ul>
+<h3 id="原生应用与本地化"><a href="#原生应用与本地化" class="headerlink" title="原生应用与本地化"></a>原生应用与本地化</h3><ul>
+<li><strong>iOS</strong>：现代化 presentation &#x2F; Chat &#x2F; Talk &#x2F; onboarding &#x2F; reconnect</li>
+<li><strong>iOS Gateway speech providers</strong></li>
+<li><strong>iOS QR onboarding 与协议恢复</strong></li>
+<li><strong>macOS</strong>：从 Finder 安装本地 Gateway</li>
+<li><strong>Apple&#x2F;Android 核心界面本地化</strong>：新增瑞典语移动本地化</li>
+</ul>
+<h3 id="关键修复精选"><a href="#关键修复精选" class="headerlink" title="关键修复精选"></a>关键修复精选</h3><ul>
+<li><strong>Codex runtime switching</strong>：bundled Codex runtime 同时支持 <code>codex/*</code> 与 <code>openai/*</code> 路由</li>
+<li><strong>SecretRef 模型凭证</strong>：解析后的 provider secrets 走 process-local sentinels，仅在最终网络&#x2F;provider-plugin 边界注入明文</li>
+<li><strong>Telegram token 脱敏</strong>：日志传输跨 chunk 时也能脱敏 bot tokens</li>
+<li><strong>Telegram durable turn 采用</strong>：spooled 更新仅在 durable agent adoption 后完成，避免恢复泄漏过时&#x2F;重复回复</li>
+<li><strong>Task delivery recovery</strong>：规整 legacy delivery 状态，让老任务可恢复运行</li>
+<li><strong>Diagnostics provider evidence</strong>：每次完整或失败的模型调用 emit 一个去重的 <code>provider.request</code> timeline 事件</li>
+<li><strong>Browser actions on Node 24</strong>：Node 24.16+ 的提前 abort body-stream 信号不再影响 valid POST actions</li>
+<li><strong>OAuth 刷新争用诊断</strong>：本地锁路径不暴露给用户，保持结构化 provider&#x2F;profile 分类</li>
+<li><strong>Exec approval prompts</strong>：背景禁用 fallback 警告只在命令真正前台运行时显示</li>
+<li><strong>Direct poll 投递</strong>：通过 owning outbound adapter 路由 direct&#x2F;hybrid polls</li>
+<li><strong>Microsoft Teams Graph 响应边界</strong>：限定文件上传&#x2F;聊天 JSON 读取上限</li>
+<li><strong>Packaged speech runtime</strong>：npm 安装时 TTS 启动恢复</li>
+<li><strong>Plugin update reliability</strong>：保留通过 ClawHub 成功切换的插件</li>
+<li><strong>Codex app-server 协议</strong>：要求 0.143+，移除 pre-0.142 兼容性，迁移 <code>on-failure</code> 到 <code>on-request</code>，管理运行时升级到 0.144.1</li>
+<li><strong>CJK Markdown 强调</strong>：相邻中文&#x2F;日文&#x2F;韩文标点不再泄漏字面标记</li>
+<li><strong>Backup 重试清理</strong>：Windows <code>EBUSY</code> 锁不再级联到后续 attempt</li>
+<li><strong>Codex yielded native subagents</strong>：parent app-server 订阅与共享 client 保持存活直至完成投递</li>
+<li><strong>Delivery recovery pacing</strong>：网关启动后合格出站&#x2F;replay 节拍放慢，避免 channel rate limits 突发</li>
+<li><strong>Outbound pre-connect recovery</strong>：清掉 stale platform-send 证据，连接失败后可重放</li>
+<li><strong>Discord 流式 final</strong>：完成回复作为新消息发送，让不活跃频道变未读</li>
+<li><strong>OpenAI-compatible SSE parsing</strong>：识别被错误标为 JSON 的事件流，不再二次加 <code>data:</code> 前缀</li>
+<li><strong>Meta Model API 契约</strong>：使用当前 Meta 端点与 output-token 字段</li>
+<li><strong>LM Studio embedding 预加载</strong>：尊重 model&#x2F;provider 上下文窗口限制，避免 OOM</li>
+<li><strong>Provider overload 分类</strong>：限流响应被分类重试&#x2F;fallback</li>
+<li><strong>Agent auth 复制顺序</strong>：复制凭证时保持源 agent 的 portable auth-profile 优先级</li>
+<li><strong>Memory session repair</strong>：日常 dreaming ingestion 簿记在 session-corpus audit 之外</li>
+<li><strong>Remote browser CDP 策略</strong>：允许配置的 CDP 控制主机通过既有 hostname allowlist</li>
+<li><strong>Config unset 诊断</strong>：解释为何继承&#x2F;默认配置不能 unset</li>
+<li><strong>Crestodian command probes</strong>：包含 stdout&#x2F;stderr 流失败</li>
+<li><strong>Feishu mention forwarding</strong>：bot Open ID 不可用时 fail closed</li>
+<li><strong>Cron edit delivery</strong>：保留隐式投递模式</li>
+<li><strong>Telegram durability</strong>：restart-dropped media 重试，survive transient polling errors，dead-letter poison updates</li>
+<li><strong>Cross-channel inbound media</strong>：保留 caption，无法物化 inbound media 时显示 unavailable-attachment 通知</li>
+<li><strong>Agent and context reliability</strong>：保留运行时覆盖、steered subagent、fallback tool-call hints 等</li>
+<li><strong>Provider 与网络安全</strong>：Moonshot &#x2F; MiniMax &#x2F; Anthropic OAuth &#x2F; Discord &#x2F; Matrix &#x2F; SMS &#x2F; browser &#x2F; update &#x2F; embeddings &#x2F; Tlon &#x2F; Inworld 路径响应边界</li>
+<li><strong>Channel delivery 与 routing</strong>：Slack 回复保留在活跃 thread、保留 account-bound 投递路由</li>
+<li><strong>Cron correctness</strong>：保留 provider&#x2F;model 选择，保留 startup catch-up deferrals</li>
+<li><strong>Memory 与 session 恢复</strong>：检测未索引转录、保留 notes、避免跨目录恢复</li>
+<li><strong>Windows 与执行</strong>：Windows allowlist 路径验证、<code>PATHEXT</code> 传播、路径大小写规范化</li>
+<li><strong>移动端与 UI 稳定性</strong>：iOS chat 换行&#x2F;最终回复保留、Android pairing&#x2F;TLS 恢复、过期 pairing 卡隐藏</li>
+<li><strong>Codex 与审批流</strong>：ChatGPT 认证报告正确、破坏性审批模式重命名为 <code>ask</code></li>
+<li><strong>配置与插件健康</strong>：限制 config 遍历到 own properties、保留 config-health 恢复状态</li>
+<li><strong>Runtime process safety</strong>：防止 SSH tunnels&#x2F;supervisors&#x2F;MCP stdio 中的未处理子流错误</li>
+<li><strong>Node runtime 兼容性</strong>：安装器&#x2F;CLI launcher&#x2F;doctor&#x2F;macOS app 拒绝不兼容的 Node 23</li>
+<li><strong>SQLite WAL safety</strong>：要求带 patch 的 SQLite runtime 版本的 Node</li>
+<li><strong>Installer 临时文件清理</strong>：下载&#x2F;rewrite 失败时清理 Node staging 与 pnpm workspace rewrite</li>
+<li><strong>QQBot media delivery</strong>：sandbox 生成媒体发送限定在 active session 的 workspace</li>
+</ul>
+<h3 id="其他值得关注的修复"><a href="#其他值得关注的修复" class="headerlink" title="其他值得关注的修复"></a>其他值得关注的修复</h3><ul>
+<li><strong>TUI 流式</strong>：实时渲染 delta-only 事件</li>
+<li><strong>Model 别名</strong>：provider-qualified aliases 在 session&#x2F;chat-command 模型切换时解析，无冲突</li>
+<li><strong>TUI 新会话 hook</strong>：通过共享 Gateway 生命周期创建 <code>/new</code> 会话</li>
+<li><strong>TUI abort 诊断</strong>：为中止运行展示脱敏的工具参数验证摘要</li>
+<li><strong>iOS Watch 回复</strong>：排队 quick replies 持久化在 gateway-scoped outbox，幂等投递</li>
+<li><strong>iOS Gateway auth retry</strong>：仅在解析 loopback 主机时重试存储的 device token</li>
+<li><strong>Bedrock Mantle 发现</strong>：限制 model-catalog 拉取时间与响应大小</li>
+<li><strong>Discord thread-title 提示</strong>：UTF-16 边界截断生成的标题消息与频道上下文</li>
+<li><strong>Telegram durable turn adoption</strong>：complete spooled updates only after durable agent adoption</li>
+<li><strong>Telegram token redaction</strong>：redact bot tokens even when log transports split them across chunks</li>
+<li><strong>Memory wiki unparsed YAML</strong>：gracefully handle unparsable YAML frontmatter in vault scans</li>
+<li><strong>OpenAI image quality&#x2F;moderation CLI 选项</strong>：expose</li>
+<li><strong>对话&#x2F;审查控制</strong>：scoped conversation capability profiles、Cursor Agent 作为 autoreview 引擎</li>
+<li><strong>Node context-path 支持</strong></li>
+</ul>
+<h3 id="重要-PR（精选）"><a href="#重要-PR（精选）" class="headerlink" title="重要 PR（精选）"></a>重要 PR（精选）</h3><ul>
+<li><strong>#93820</strong> imessage 识别 MiniMax mm: reasoning 标签</li>
+<li><strong>#101092 &#x2F; #98254 &#x2F; #101238 &#x2F; #102873 &#x2F; #103070 &#x2F; #103163 &#x2F; #99658 &#x2F; #99759 &#x2F; #98333 &#x2F; #103581 &#x2F; #98021 &#x2F; #104778 &#x2F; #102289</strong> 新模型与 Provider 接入</li>
+<li><strong>#99289 &#x2F; #99838 &#x2F; #100386 &#x2F; #101103 &#x2F; #101497</strong> Control UI session-first 重构</li>
+<li><strong>#99935 &#x2F; #100029 &#x2F; #100656 &#x2F; #101887</strong> Crestodian conversational onboarding</li>
+<li><strong>#100219 &#x2F; #100227 &#x2F; #100283 &#x2F; #100770 &#x2F; #100771</strong> 离线与语音</li>
+<li><strong>#87643 &#x2F; #100814 &#x2F; #101117 &#x2F; #101234</strong> 会话组织与生成标题</li>
+<li><strong>#98006 &#x2F; #98126 &#x2F; #98786 &#x2F; #103664 &#x2F; #103916</strong> Telegram &#x2F; Codex 续聊</li>
+<li><strong>#101881 &#x2F; #104529</strong> 容器迁移先于 readiness、control-plane-safe mode</li>
+<li><strong>#102008 &#x2F; #102009</strong> SecretRef 模型凭证</li>
+<li><strong>#103861</strong> Telegram token 跨 chunk 脱敏</li>
+<li><strong>#103664 &#x2F; #103952 &#x2F; #103965</strong> Telegram durable turn adoption</li>
+<li><strong>#103946</strong> 任务投递恢复（fixes #103168）</li>
+<li><strong>#103762</strong> Codex runtime switching</li>
+</ul>
+<hr>
+<h2 id="微信插件（2-4-4-→-2-4-6）"><a href="#微信插件（2-4-4-→-2-4-6）" class="headerlink" title="微信插件（2.4.4 → 2.4.6）"></a>微信插件（2.4.4 → 2.4.6）</h2><p>微信插件同步升至 2.4.6（中间 2.4.5 → 2.4.6 是 6 分钟后的重发包，无代码变更）。详见另一篇专门文章《微信插件更新解读 (2.4.4 → 2.4.5)》。</p>
+<hr>
+<h2 id="更新方式"><a href="#更新方式" class="headerlink" title="更新方式"></a>更新方式</h2><p>如需更新到最新版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npx -y @tencent-weixin/openclaw-weixin-cli install  <span class="comment"># 更新微信插件</span></span><br><span class="line">openclaw update                                    <span class="comment"># 更新 OpenClaw Core</span></span><br></pre></td></tr></table></figure>
+
+<p>控制面板地址：<code>http://localhost:18789</code>（令牌见上）</p>
+<hr>
+<p><em>以上内容基于 OpenClaw 官方 Changelog 人工整理，覆盖 1536 个 PR 的主要用户感知变化。如发现表述不准确之处欢迎指正。</em></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OpenClaw/" rel="tag"># OpenClaw</a>
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E6%8F%92%E4%BB%B6/" rel="tag"># 微信插件</a>
+              <a href="/tags/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/" rel="tag"># 更新日志</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/06/2026-07-06-openclaw-weixin-2-4-4-to-2-4-6/" rel="prev" title="微信插件更新解读 (2.4.4 → 2.4.5)">
+                  <i class="fa fa-angle-left"></i> 微信插件更新解读 (2.4.4 → 2.4.5)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">红后</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
